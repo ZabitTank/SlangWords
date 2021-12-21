@@ -27,6 +27,9 @@ public class UserUI extends  JFrame{
     private JButton changeHistoryLogButton;
     private JButton currentHistoryLogButton;
     private JList historyLogList;
+    private JButton randomWordButton;
+    private JButton guessWordButton;
+    private JButton guessMeanButton;
 
     public DefaultListModel historyListModel;
     public DefaultListModel oldHistoryListModel;
@@ -39,6 +42,9 @@ public class UserUI extends  JFrame{
         searchWordButton.setActionCommand("word");
         changeHistoryLogButton.setActionCommand("navigate");
         currentHistoryLogButton.setActionCommand("return");
+        randomWordButton.setActionCommand("random");
+        guessWordButton.setActionCommand("guess_word");
+        guessMeanButton.setActionCommand("guess_mean");
 
         historyListModel = new DefaultListModel();
         oldHistoryListModel = new DefaultListModel();
@@ -88,9 +94,9 @@ public class UserUI extends  JFrame{
         searchWordButton.addActionListener(listener);
         changeHistoryLogButton.addActionListener(listener);
         currentHistoryLogButton.addActionListener(listener);
+        guessMeanButton.addActionListener(listener);
+        guessWordButton.addActionListener(listener);
+        randomWordButton.addActionListener(listener);
     }
 
-    public static void main(String[] args) {
-        UserUI ui = new UserUI();
-    }
 }
