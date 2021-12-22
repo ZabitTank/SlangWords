@@ -30,6 +30,7 @@ public class UserUI extends  JFrame{
     private JButton randomWordButton;
     private JButton guessWordButton;
     private JButton guessMeanButton;
+    private JButton resetOriginalSlangWordButton;
 
     public DefaultListModel historyListModel;
     public DefaultListModel oldHistoryListModel;
@@ -45,6 +46,7 @@ public class UserUI extends  JFrame{
         randomWordButton.setActionCommand("random");
         guessWordButton.setActionCommand("guess_word");
         guessMeanButton.setActionCommand("guess_mean");
+        resetOriginalSlangWordButton.setActionCommand("reset");
 
         historyListModel = new DefaultListModel();
         oldHistoryListModel = new DefaultListModel();
@@ -97,6 +99,7 @@ public class UserUI extends  JFrame{
         guessMeanButton.addActionListener(listener);
         guessWordButton.addActionListener(listener);
         randomWordButton.addActionListener(listener);
+        resetOriginalSlangWordButton.addActionListener(listener);
     }
 
 }
