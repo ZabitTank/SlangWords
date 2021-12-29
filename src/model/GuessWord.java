@@ -2,6 +2,9 @@ package model;
 
 import java.util.Vector;
 
+/**
+ * Class description: This class only create to hold value for guess word game
+ */
 public class GuessWord {
 
         public String word;

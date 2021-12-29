@@ -19,6 +19,11 @@ public class SlangWords {
     public static final boolean GUESS_WORD = true;
     public static final boolean GUESS_MEAN = false;
 
+    /**
+     * read original data (slang.txt) into two map also handle collision
+     * @return SlangsWords
+     */
+
     public static SlangWords getOriginal(){
         SlangWords result = new SlangWords(true);
 
@@ -72,15 +77,16 @@ public class SlangWords {
     // not implement yet
     private Map<String,String> reverseData;
 
-    /**
-     *Description: Constructor of SlangWords class
-     */
     public SlangWords(boolean empty){
         data = new HashMap<>();
         reverseData = new HashMap<>();
     }
 
     // load all SlangWord in to data
+
+    /**
+     * This is constructor build SlangWors from slang.dat. If slang.dat not existed, then read from original
+     */
     public SlangWords() {
         File directory = new File("./slang.dat");
 
@@ -115,11 +121,18 @@ public class SlangWords {
         }
     }
 
-
+    /**
+     * Setter of data
+     * @param data the map<String word , String mean>
+     */
     public void setData(Map<String, String> data) {
         this.data = data;
     }
 
+    /**
+     * Setter of reverseData
+     * @param reverseData the map<String mean , String word>
+     */
     public void setReverseData(Map<String, String> reverseData) {
         this.reverseData = reverseData;
     }
@@ -129,7 +142,7 @@ public class SlangWords {
 
 
     /**
-     * Description: saveDataStructure methods used to write data in file with ObjectOutputStream
+     * save Data Structure into slang.dat and reverser_slang.dat by using ObjectOutputStream.
      */
     public void saveDataStructure(){
         try {
@@ -155,9 +168,8 @@ public class SlangWords {
     }
 
     /**
-     *
-     * Description: get means by value. return Array of possible means
-     * @param word: is a String
+     * Get means by word. return Array of possible means
+     * @param word: is a word you want to search
      */
 
     public Vector<String> getValue(String word){
@@ -176,6 +188,11 @@ public class SlangWords {
         return result;
     }
 
+    /**
+     * Get words by mean. return Array of possible means
+     * @param mean: is a mean you want to search
+     */
+
     public Vector<String> getWord(String mean){
         Vector<String> result = new Vector<>();
         String s;
@@ -192,6 +209,13 @@ public class SlangWords {
         return result;
     }
 
+    /**
+     *
+     * @param choose Type of adding, this param also auto handling
+     * @param word is a word you want to add into directory
+     * @param mean is a mean of word you want to add
+     * @param index index of collision, this param also auto handling
+     */
     public void addSlangWord(int choose,String word, String mean, int index){
         if(choose == REPLACE) {
             String newWord = word;
@@ -215,6 +239,11 @@ public class SlangWords {
         }
     }
 
+    /**
+     *
+     * @param word : is a word you want to delete
+     * @param index : this param is auto handling
+     */
     public void delete(String word,int index){
         String mean = this.data.get(word);
 
@@ -263,6 +292,12 @@ public class SlangWords {
         }
     }
 
+    /**
+     *
+     * @param word
+     * @param mean
+     * @return return true if word and mean already in exist on this SlangsWord
+     */
     public boolean isExist(String word , String mean){
         if(data.containsKey(word)) {
             Vector<String> allMean = this.getValue(word);
@@ -272,6 +307,11 @@ public class SlangWords {
         return false;
     }
 
+    /**
+     *
+     * @param wordOrMean
+     * @return return GuessWord is a tuple for random word or mean and the bunch of answer
+     */
     public GuessWord guess(boolean wordOrMean){
         Random random = new Random();
 
