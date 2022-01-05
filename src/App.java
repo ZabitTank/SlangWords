@@ -38,7 +38,7 @@ public class App {
                 String word = ui.wordTextField.getText();
                 String mean = ui.meanTextField.getText();
 
-                if (word == null || mean == null) {
+                if (word.isEmpty() || mean.isEmpty()) {
                     JOptionPane.showMessageDialog(ui, "Invalid value Word or Mean");
 
                 } else if (data.isExist(word, mean)) {
@@ -73,7 +73,7 @@ public class App {
                 }
             } else if (e.getActionCommand().equals("delete")) {
                 String word = ui.wordTextField.getText();
-                if (word == null) JOptionPane.showMessageDialog(ui, "Empty word to delete");
+                if (word.isEmpty()) JOptionPane.showMessageDialog(ui, "Empty word to delete");
                 else {
                     Vector<String> result = data.getValue(word);
                     if (result.isEmpty()) {
@@ -101,7 +101,7 @@ public class App {
                 }
             } else if (e.getActionCommand().equals("mean")) {
                 String mean = ui.meanTextField.getText();
-                if (mean == null) JOptionPane.showMessageDialog(ui, "Empty mean to search");
+                if (mean.isEmpty()) JOptionPane.showMessageDialog(ui, "Empty mean to search");
                 else {
                     Vector<String> result = data.getWord(mean);
                     ui.updateResultLog(result);
@@ -109,7 +109,7 @@ public class App {
                 }
             } else if (e.getActionCommand().equals("word")) {
                 String word = ui.wordTextField.getText();
-                if (word == null) JOptionPane.showMessageDialog(ui, "Empty word to search");
+                if (word.isEmpty()) JOptionPane.showMessageDialog(ui, "Empty word to search");
                 else {
                     Vector<String> result = data.getValue(word);
                     ui.updateResultLog(result);
